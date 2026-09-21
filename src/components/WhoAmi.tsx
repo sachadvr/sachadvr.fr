@@ -1,128 +1,150 @@
-import React from "react";
-import { useAtom } from "jotai";
-import { languagesAtom } from "../store/state";
-import { FaReact, FaVuejs, FaHtml5, FaCss3, FaJava, FaPython, FaPhp, FaSass } from "react-icons/fa";
-import { DiJavascript, DiDocker, DiTerminal } from "react-icons/di";
-import { SiTypescript, SiSvelte, SiSymfony } from "react-icons/si";
-import { VscTerminalPowershell } from "react-icons/vsc";
-import { HiOutlineCode } from "react-icons/hi";
-import "./WhoAmi.scss";
+import React from 'react'
+import { FaGithub } from 'react-icons/fa'
+import { useAtom } from 'jotai'
+import { Trans, useTranslation } from 'react-i18next'
 
+import { languagesAtom } from '@/store/state'
+import { LanguageIcon, isDisplayableLanguage } from '@/lib/language-icons'
+import SectionMarker from '@/components/SectionMarker'
+import FeatureGrid, { FeatureCell } from '@/components/FeatureGrid'
+import RetroWindow from '@/components/RetroWindow'
+import DotSurface from '@/components/DotSurface'
+import { RirekishoField } from '@/components/Rirekisho'
+import { SITE } from '@/i18n/site'
+
+const FEATURES = (t: (key: string) => string) => [
+  { index: '01', title: t('whoami.techFrontend'), value: t('whoami.techFrontendValue') },
+  { index: '02', title: t('whoami.techDevops'), value: t('whoami.techDevopsValue'), accent: true },
+  { index: '03', title: t('rirekisho.fieldInterests'), value: t('whoami.techInterests') },
+]
+
+/**
+ * Section « Compétences » : marqueur de section, grille de fonctionnalités à
+ * bordures connectées (une cellule jaune) et fenêtre rétro contenant les
+ * mentions du rirekisho (formation + stack).
+ */
 const WhoAmi = () => {
-  const [languagesElements, setLanguagesElements] = React.useState<React.ReactNode[]>([]);
-  const [langs, setLangs] = useAtom(languagesAtom);
+  const { t } = useTranslation()
+  const [languages] = useAtom(languagesAtom)
 
-  React.useEffect(() => {
-    const languagesElement: any = [];
-    new Set(langs).forEach((language) => {
-      console.log(language);
-      switch (language) {
-        case "JavaScript":
-          languagesElement.push(<DiJavascript key={`javascript-${language}`} />);
-          break;
-        case "TypeScript":
-          languagesElement.push(<SiTypescript key={`typescript-${language}`} />);
-          break;
-        case "Go":
-          break;
-        case "Dockerfile":
-          languagesElement.push(<DiDocker key={`docker-${language}`} />);
-          break;
-        case "Makefile":
-          break;
-        case "Shell":
-          languagesElement.push(<DiTerminal key={`terminal-${language}`} />);
-          break;
-        case "NSIS":
-          break;
-        case "Batchfile":
-          break;
-        case "EJS":
-          break;
-        case "Svelte":
-          languagesElement.push(<SiSvelte key={`svelte-${language}`} />);
-          break;
-        case "HTML":
-          languagesElement.push(<FaHtml5 key={`html-${language}`} />);
-          break;
-        case "CSS":
-          languagesElement.push(<FaCss3 key={`css-${language}`} />);
-          break;
-        case "SCSS":
-          languagesElement.push(<FaSass key={`sass-${language}`} />);
-          break;
-        case "PHP":
-          languagesElement.push(<FaPhp key={`php-${language}`} />);
-          break;
-        case "Java":
-          languagesElement.push(<FaJava key={`java-${language}`} />);
-          break;
-        case "Python":
-          languagesElement.push(<FaPython key={`python-${language}`} />);
-          break;
-        case "React":
-          languagesElement.push(<FaReact key={`react-${language}`} />);
-          break;
-        case "Vue":
-          languagesElement.push(<FaVuejs key={`vue-${language}`} />);
-          break;
-        case "Symfony":
-          languagesElement.push(<SiSymfony key={`symfony-${language}`} />);
-          break;
-        case "PowerShell":
-          languagesElement.push(<VscTerminalPowershell key={`powershell-${language}`} />);
-          break;
-        case "Hack":
-          languagesElement.push(<HiOutlineCode key={`hack-${language}`} />);
-          break;
-        default:
-          languagesElement.push(<span key={`default-${language}`}>{language}</span>);
-      }
-    });
-
-    setLanguagesElements(languagesElement);
-  }, [setLangs, langs]);
+  const displayableLanguages = Array.from(new Set(languages)).filter(isDisplayableLanguage)
 
   return (
-    <div className="content whoami">
-      <section id="whoami">
-      <div>
-            <h2>Qui suis-je ?</h2>
+    <section id="skills" className="scroll-mt-20 border-b border-border md:scroll-mt-28">
+      <SectionMarker label={t('sections.skills')}>
+        <span className="mono-label text-ink/40">03 / 03</span>
+      </SectionMarker>
 
-            <blockquote>
-              <p>
-                <strong>
-                  Étudiant en Master 1 Cybersécurité et Développement
-                </strong>&nbsp;à l&apos;Université catholique de Lille, je suis un développeur
-                passionné par les nouvelles technologies.
-                J&apos;ai acquis de l&apos;expérience par le biais de projets personnels et professionnels qui me servent de terrain de jeu pour
-                apprendre et me perfectionner.
-              </p>
-            </blockquote>
-          </div>
-          <div>
-            <h2>Mon parcours</h2>
-            <blockquote>
-                <p>Actuellement en
-                alternance chez <b>Sweeek</b> en tant que <u>Développeur fullstack</u>,
-                j&apos;ai eu l&apos;opportunité de travailler sur divers aspects du développement,
-                 allant du front-end au back-end, ainsi que sur des tâches de devops. 
-                 <br/><br/>Passionné par l&apos;innovation, je m&apos;intéresse particulièrement à 
-                 l&apos;intelligence artificielle et au machine learning, et bien évidemment au développement web - domaines dans lesquels je 
-                 cherche constamment à approfondir mes connaissances.</p>
-                </blockquote>
-            
-
-          </div>
-          <div>
-        <h2>Mes Technologies</h2>
-        <div className={`mx-auto w-fit grid gap-3 items-center p-2 place-items-center grid-flow-col grid-rows-2 ${languagesElements.length > 0 ? 'border' : ''}`}>
-          {languagesElements.length > 0 ? languagesElements.map((lang: any) => lang) : "En cours de chargement..."}
+      <div className="page-x py-16 lg:py-24">
+        <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.95] tracking-[-0.05em]">
+            {t('whoami.title')}
+          </h2>
+          <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
+            <Trans
+              i18nKey="whoami.bio"
+              components={{ b: <strong className="text-foreground" /> }}
+            />
+          </p>
         </div>
-        </div>
-      </section>
-    </div>
-  );
-};
 
-export default WhoAmi;
+        <FeatureGrid className="mt-12">
+          {FEATURES(t).map(({ index, title, value, accent }) => (
+            <FeatureCell key={index} accent={accent}>
+              <div className="flex min-h-[240px] flex-col gap-4 p-8">
+                <span className="mono-label text-ink/50">
+                  {index} / 03<span aria-hidden="true"> ▸</span>
+                </span>
+                <h3 className="font-display text-2xl font-semibold tracking-[-0.04em]">{title}</h3>
+                <p className="text-base leading-relaxed text-muted-foreground">{value}</p>
+              </div>
+              <div className="relative mt-auto flex min-h-[280px] flex-1 flex-col justify-between overflow-hidden border-t border-border">
+                <DotSurface className="absolute inset-0" dense={!accent} sparse={accent} />
+                <span className="relative self-end p-6 font-mono text-[10px] font-semibold uppercase tracking-[0.05em] text-ink/50">
+                  {accent ? 'deploy: ok' : `module::${index}`}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className={`relative m-8 mt-auto self-start border border-ink px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.05em] ${
+                    accent ? 'bg-ink text-crimson' : 'bg-paper'
+                  }`}
+                >
+                  {index === '01' && 'symfony · api platform · aws'}
+                  {index === '02' && 'vue 3 · docker · k8s'}
+                  {index === '03' && <>py &gt; import cyber_security_ia</>}
+                </span>
+              </div>
+            </FeatureCell>
+          ))}
+        </FeatureGrid>
+
+        <RetroWindow
+          title="rirekisho.yaml"
+          meta={t('rirekisho.sheetSkills')}
+          className="mt-6"
+          bodyClassName="p-0"
+        >
+          <div className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+            <div className="flex flex-col border-b border-border lg:border-b-0 lg:border-r">
+              <RirekishoField label={t('rirekisho.fieldStack')} grow className="py-4">
+                {displayableLanguages.length === 0 ? (
+                  <p className="terminal-prompt text-sm text-muted-foreground">
+                    {t('whoami.stackLoading')}
+                    <span className="ml-1 inline-block h-4 w-2 translate-y-[2px] animate-blink bg-accent" />
+                  </p>
+                ) : (
+                  <ul className="flex flex-wrap gap-2">
+                    {displayableLanguages.map((language) => (
+                      <li key={language} className="tech-label px-2 py-1">
+                        <LanguageIcon language={language} className="h-3.5 w-3.5 text-primary" />
+                        {language}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </RirekishoField>
+              <div className="flex flex-col gap-2 border-t border-border p-5 font-mono text-xs leading-relaxed">
+                <p className="terminal-prompt text-muted-foreground">
+                  whoami <span className="ml-1 inline-block h-3 w-2 translate-y-[2px] animate-blink bg-ink" />
+                </p>
+                <p className="pl-4 text-foreground">✓ {t('person.jobTitle')}</p>
+                <p className="terminal-prompt text-muted-foreground">
+                  pwd <span aria-hidden="true" />
+                </p>
+                <p className="pl-4 text-foreground">
+                  /home/sachadvr/{t('common.city').toLowerCase()}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <RirekishoField label={t('rirekisho.fieldStatus')}>
+                <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.05em]">
+                  {t('hero.disclaimer')}
+                </p>
+              </RirekishoField>
+              <RirekishoField label={t('rirekisho.fieldEmail')}>
+                <a href={`mailto:${SITE.email}`} className="highlight-blue font-mono text-sm">
+                  {SITE.email}
+                </a>
+              </RirekishoField>
+              <RirekishoField label={t('rirekisho.fieldLinks')} grow className="p-4">
+                <a
+                  href={`https://github.com/${SITE.githubUser}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="brutal-box brutal-interactive grid h-11 w-11 place-items-center"
+                  aria-label="GitHub"
+                >
+                  <FaGithub />
+                </a>
+              </RirekishoField>
+            </div>
+          </div>
+        </RetroWindow>
+      </div>
+    </section>
+  )
+}
+
+export default WhoAmi

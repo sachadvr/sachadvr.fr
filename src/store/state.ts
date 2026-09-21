@@ -1,7 +1,21 @@
 import { atom } from "jotai";
 
-import React from "react";
+export interface Repository {
+  name: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  created_at: string;
+  pushed_at: string;
+  updated_at: string;
+}
 
-export const languagesAtom = atom<React.ReactNode[]>([]);
+export interface RepositoryWithLanguages extends Repository {
+  languages: Record<string, number>;
+}
 
-export const portfolioAtom = atom<any[]>([]);
+export const languagesAtom = atom<string[]>([]);
+
+export const repositoriesAtom = atom<Repository[]>([]);
+
+export const portfolioAtom = atom<RepositoryWithLanguages[]>([]);

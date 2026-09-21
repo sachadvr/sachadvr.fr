@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/src/images/fav.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SachaDVR - CV & Portfolio</title>
 
-    <meta name="description" content="Découvrez le portfolio interactif de Sacha, développeur fullstack passionné basé à Lille, étudiant en cybersécurité et développement.">
-    <meta name="keywords" content="sachadvr, sachadvr cv, sacha dvr fr, sachadvr.fr, sacha duvivier, sacha-andrea duvivier, portfolio interactif, développement web, développeur fullstack, cybersécurité, projets web, applications modernes, Lille, étudiant développeur">
+    <!--
+      Baseline SEO servie dans le HTML initial (version française, langue par défaut).
+      `data-rh="true"` : react-helmet-async reconnait ces balises comme les siennes et
+      les remplace proprement au montage au lieu de les dupliquer.
+    -->
+    <title data-rh="true">Sacha Duvivier — Développeur Fullstack Freelance & Full Remote</title>
+    <meta data-rh="true" name="description" content="Portfolio de Sacha Duvivier, développeur fullstack (Symfony, Vue 3, TypeScript, Docker, Kubernetes), disponible en freelance ou full-time, full remote ou expatriation (Asie, Australie, Singapour…). Master Cyber, major de promo. Projets open source et contact direct.">
+    <link data-rh="true" rel="canonical" href="https://sachadvr.fr/">
+    <link data-rh="true" rel="alternate" hreflang="fr-FR" href="https://sachadvr.fr/">
+    <link data-rh="true" rel="alternate" hreflang="en" href="https://sachadvr.fr/en">
+    <link data-rh="true" rel="alternate" hreflang="es" href="https://sachadvr.fr/es">
+    <link data-rh="true" rel="alternate" hreflang="zh-Hans" href="https://sachadvr.fr/zh">
+    <link data-rh="true" rel="alternate" hreflang="ja" href="https://sachadvr.fr/ja">
+    <link data-rh="true" rel="alternate" hreflang="x-default" href="https://sachadvr.fr/">
+
+    <meta data-rh="true" property="og:type" content="website">
+    <meta data-rh="true" property="og:site_name" content="Sacha Duvivier">
+    <meta data-rh="true" property="og:title" content="Sacha Duvivier — Développeur Fullstack Freelance & Full Remote">
+    <meta data-rh="true" property="og:description" content="Développeur fullstack (Symfony, Vue 3, TypeScript, Docker, Kubernetes), disponible en freelance ou full-time, full remote ou expatriation (Asie, Australie, Singapour…).">
+    <meta data-rh="true" property="og:url" content="https://sachadvr.fr/">
+    <meta data-rh="true" property="og:image" content="https://sachadvr.fr/preview.png">
+    <meta data-rh="true" property="og:locale" content="fr_FR">
+    <meta data-rh="true" property="og:locale:alternate" content="en_US">
+    <meta data-rh="true" property="og:locale:alternate" content="es_ES">
+    <meta data-rh="true" property="og:locale:alternate" content="zh_CN">
+    <meta data-rh="true" property="og:locale:alternate" content="ja_JP">
+    <meta data-rh="true" name="twitter:card" content="summary_large_image">
+    <meta data-rh="true" name="twitter:site" content="@SachaDvr">
+    <meta data-rh="true" name="twitter:creator" content="@SachaDvr">
+    <meta data-rh="true" name="twitter:title" content="Sacha Duvivier — Développeur Fullstack Freelance & Full Remote">
+    <meta data-rh="true" name="twitter:description" content="Développeur fullstack disponible en freelance ou full-time, full remote ou expatriation (Asie, Australie, Singapour…).">
+    <meta data-rh="true" name="twitter:image" content="https://sachadvr.fr/preview.png">
+
+    <!--
+      Polices auto-hébergées (cf. src/fonts.css + public/fonts/) : plus aucune
+      requête vers fonts.googleapis.com, donc plus de CSS tiers bloquant le rendu.
+      Les deux familles critiques above-the-fold sont préchargées.
+    -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/ibm-plex-sans-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/ibm-plex-mono-latin-400.woff2" crossorigin>
+
+    <!-- LCP du hero : rendu par React, donc invisible du preload scanner sans cet indice. -->
+    <link rel="preload" as="image" type="image/webp" href="/src/images/photo.webp" fetchpriority="high">
+
+    <meta name="keywords" content="sachadvr, sacha duvivier, portfolio développeur, développeur fullstack freelance, full remote developer, remote developer for hire, symfony developer, vue 3 developer, react, typescript, node.js, docker, kubernetes, cybersécurité">
+    <meta name="author" content="Sacha Duvivier">
     <meta name="apple-mobile-web-app-title" content="SachaDVR">
     <link rel="apple-touch-icon" sizes="180x180" href="/src/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/src/images/favicon-32x32.png">
@@ -15,40 +58,59 @@
     <link rel="manifest" href="/src/assets/site.webmanifest">
     <link rel="mask-icon" href="/src/images/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/src/images/favicon.ico">
-    <meta name="msapplication-TileColor" content="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="SachaDVR - CV & Portfolio">
-    <meta property="og:description" content="Découvrez le portfolio interactif de Sacha, développeur fullstack passionné basé à Lille, étudiant en cybersécurité et développement.">
-    <meta property="og:image" content="/src/images/preview.png">
-    <meta property="og:url" content="https://sachadvr.fr">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SachaDVR - CV & Portfolio">
-    <meta name="twitter:description" content="Explorez le portfolio interactif de Sacha, développeur fullstack passionné.">
-    <meta name="twitter:image" content="/src/images/preview.png">
+    <meta name="msapplication-TileColor" content="#202020">
+    <meta name="theme-color" content="#f5f5f5">
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://sachadvr.fr/#person",
         "name": "Sacha Duvivier",
-        "jobTitle": "Développeur Fullstack",
+        "alternateName": "SachaDVR",
+        "jobTitle": "Développeur Fullstack (Freelance / Full-time)",
+        "description": "Sacha Duvivier est développeur fullstack basé à Lille, en France, ouvert au freelance comme au full-time, en full remote ou en expatriation (Asie, Australie, Singapour…). Il travaille en Symfony, Vue 3, TypeScript et Docker, et est titulaire d'un master Cyber (major de promo).",
         "url": "https://sachadvr.fr",
+        "email": "mailto:contact@sachadvr.fr",
+        "image": "https://sachadvr.fr/preview.png",
+        "nationality": { "@type": "Country", "name": "France" },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Lille",
-          "addressCountry": "France"
+          "addressCountry": "FR"
         },
+        "knowsLanguage": ["fr", "en"],
+        "knowsAbout": ["Symfony", "Vue 3", "TypeScript", "JavaScript", "React", "Doctrine ORM", "API Platform", "PostgreSQL", "MariaDB", "Docker", "Kubernetes", "AWS Lambda", "Cybersecurity", "Machine Learning"],
         "sameAs": [
-          "https://linkedin.com/in/sachadvr",
-          "https://github.com/sachadvr"
+          "https://github.com/sachadvr",
+          "https://www.linkedin.com/in/sachadvr/",
+          "https://twitter.com/SachaDvr",
+          "https://instagram.com/sachadvr"
         ]
       }
-      </script>
-
-
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Sacha Duvivier — développeur fullstack freelance & full remote</h1>
+      <p>
+        Sacha Duvivier est développeur fullstack basé à Lille, en France, disponible en freelance
+        ou en full-time, en full remote ou en expatriation (Asie, Australie, Singapour…). Il
+        travaille en Symfony, Vue 3, TypeScript et Docker, et est titulaire d'un master Cyber
+        (major de promo) de l'Université catholique de Lille.
+      </p>
+      <h2>Contact</h2>
+      <p>E-mail : <a href="mailto:contact@sachadvr.fr">contact@sachadvr.fr</a></p>
+      <h2>Versions linguistiques</h2>
+      <ul>
+        <li><a href="https://sachadvr.fr/">Français</a></li>
+        <li><a href="https://sachadvr.fr/en">English</a></li>
+        <li><a href="https://sachadvr.fr/es">Español</a></li>
+        <li><a href="https://sachadvr.fr/zh">简体中文</a></li>
+        <li><a href="https://sachadvr.fr/ja">日本語</a></li>
+      </ul>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

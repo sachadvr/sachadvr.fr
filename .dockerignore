@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+api
+.git
+.github
+.idea
+.DS_Store
+*.local
+README.md

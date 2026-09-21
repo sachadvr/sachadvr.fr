@@ -1,0 +1,219 @@
+{
+  "common": {
+    "city": "Lille",
+    "country": "Francia",
+    "back": "Volver",
+    "backHome": "Volver al inicio",
+    "scrollTop": "Volver arriba",
+    "photoAlt": "Sacha Duvivier",
+    "languageSwitcher": "Cambiar de idioma",
+    "currentLanguage": "Idioma actual: {{language}}"
+  },
+  "person": {
+    "jobTitle": "Desarrollador Fullstack",
+    "location": "Full remote · abierto a mudanza (Asia, Australia, Singapur…)",
+    "summary": "Sacha Duvivier es desarrollador fullstack afincado en $t(common.city), $t(common.country), abierto a freelance o tiempo completo, en remoto total o con reubicación (Asia, Australia, Singapur…). Trabaja con Symfony, Vue 3, TypeScript y Docker, y tiene un máster en Cyber (top de su promoción)."
+  },
+  "hero": {
+    "badge": "disponible / freelance y tiempo completo · full remote",
+    "role": "Desarrollador fullstack. Máster en Cyber. Freelance o tiempo completo, full remote.",
+    "kicker": "Rirekisho · CV y portafolio · 2026",
+    "mark": "CV",
+    "lead": "Desarrollador fullstack con un Máster en Cyber (primero de mi promoción). Diseño aplicaciones de extremo a extremo: frontend, API, backoffice e infraestructura.",
+    "diffBefore": "estado: en misión",
+    "diffAfter": "disponible: freelance y tiempo completo · full remote",
+    "ctaContact": "Contactar",
+    "ctaPortfolio": "Ver el portafolio",
+    "statsActive": "Proyectos en curso",
+    "statsTotal": "Proyectos publicados",
+    "sync": "Sync github",
+    "live": "live",
+    "scroll": "Scroll",
+    "terminalLabel": "Terminal — Sacha Duvivier, desarrollador fullstack disponible",
+    "codeLine1": "$ cat ~/rirekisho.yaml",
+    "typed": [
+      "nombre: Sacha Duvivier",
+      "rol: fullstack — freelance · tiempo completo · remoto"
+    ],
+    "disclaimer": "disponible — respuesta en 48 h, sin compromiso",
+    "marqueeTitle": "Toolbox · tecnologías"
+  },
+  "nav": {
+    "skills": "Competencias",
+    "work": "Proyectos",
+    "timeline": "Trayectoria",
+    "contact": "Contacto"
+  },
+  "ticker": {
+    "active": "ACTIVOS",
+    "total": "TOTAL",
+    "projectsActif": "proyectos en curso",
+    "projectsTotal": "proyectos publicados",
+    "master": "MÁSTER 01",
+    "masterLabel": "cyber — primero de promoción",
+    "location": "LILLE",
+    "locationLabel": "francia · full remote",
+    "delay": "48H",
+    "delayLabel": "respuesta en 48 h"
+  },
+  "sections": {
+    "skills": "Competencias",
+    "work": "Proyectos destacados",
+    "timeline": "Trayectoria",
+    "metrics": "Cifras",
+    "contact": "Contacto"
+  },
+  "metric": {
+    "total": "proyectos publicados",
+    "active": "proyectos en curso",
+    "master": "máster en cyber — primero de promoción",
+    "delay": "respuesta en 48 h",
+    "title": "Entregables, no promesas.",
+    "subtitle": "Cifras reales, directamente del GitHub — no publicidad inflada."
+  },
+  "rirekisho": {
+    "docTitle": "Currículum",
+    "updated": "Actualizado el",
+    "fieldName": "Nombre",
+    "fieldRole": "Puesto",
+    "fieldLocation": "Dirección",
+    "fieldEmail": "Correo",
+    "fieldStatus": "Estado",
+    "fieldLinks": "Enlaces",
+    "fieldEducation": "Formación",
+    "fieldInterests": "Intereses",
+    "fieldStack": "Stack",
+    "sheetSkills": "Competencias y titulaciones",
+    "sheetProjects": "Historial de proyectos",
+    "sheetFreeText": "Texto libre",
+    "colYear": "Año",
+    "colMonth": "Mes",
+    "colEntry": "Descripción",
+    "colActivity": "Actividad",
+    "entries": "entradas"
+  },
+  "whoami": {
+    "title": "¿Quién soy?",
+    "bio": "<b>Máster en Cyber</b> (desarrollo y seguridad), top de su promoción, Université catholique de Lille. Desarrollador fullstack en formación dual en <b>Alice's Garden</b> (plataforma e-commerce de alto tráfico), donde diseña funcionalidades backend y frontend de extremo a extremo.",
+    "techFrontend": "Backend",
+    "techFrontendValue": "Symfony (servicios, bundles a medida), API Platform (JWT/OAuth), Lambdas AWS serverless (Bref), Doctrine ORM (MariaDB/MySQL).",
+    "techDevops": "Frontend y DevOps",
+    "techDevopsValue": "Vue 3 (Composition API, Pinia), Docker, pipelines CI/CD, bases de Kubernetes (pods, kubectl, k9s).",
+    "techInterests": "Gran interés por la ciberseguridad, la IA/ML y las buenas prácticas de arquitectura (SOLID, tests PHPUnit/Behat).",
+    "stackLoading": "cargando tecnologías"
+  },
+  "featured": {
+    "title": "Proyectos destacados",
+    "loading": "seleccionando proyectos destacados",
+    "labelMain": "Proyecto destacado",
+    "labelRepo": "Ver el repo",
+    "stars": "stars",
+    "allProjects": "Todos los proyectos",
+    "clone": "git clone {{repo}}"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "loading": "recuperando proyectos",
+    "noDescription": "Sin descripción para este proyecto.",
+    "subtitle": "Cada entrada es un repositorio público de GitHub, del más antiguo al más reciente. Las filas llevan a la página del proyecto.",
+    "subtitleCompact": "Repos públicos, del más antiguo al más reciente."
+  },
+  "contact": {
+    "title": "Contactar",
+    "heading": "Trabajemos juntos",
+    "intro": "¿Una pregunta, un proyecto, una oportunidad? Rellena el formulario o escribe directamente a <mail>{{email}}</mail>.",
+    "labelName": "Empresa o particular",
+    "placeholderName": "Nombre",
+    "labelEmail": "Correo electrónico",
+    "placeholderEmail": "tu@ejemplo.com",
+    "labelPhone": "Teléfono",
+    "placeholderPhone": "+33 6 00 00 00 00",
+    "labelMessage": "Mensaje",
+    "placeholderMessage": "Tu mensaje...",
+    "submit": "Enviar",
+    "statusIdle": "formulario listo para enviar",
+    "statusSending": "enviando...",
+    "statusSent": "mensaje enviado. Respuesta en menos de 48 h.",
+    "statusError": "error al enviar. Inténtalo más tarde."
+  },
+  "footer": {
+    "rights": "© {{year}} Sacha DVR — todos los derechos reservados",
+    "tagline": "CV y portafolio — diseñado, probado y publicado por Sacha DVR.",
+    "cgu": "Condiciones de uso",
+    "cgv": "Condiciones de venta",
+    "links": "Enlaces",
+    "navTitle": "Navegación",
+    "legalTitle": "Legal",
+    "socialsTitle": "Redes",
+    "newsletter": {
+      "title": "Mantente al día",
+      "subtitle": "Proyectos open source y disponibilidad — un correo al mes como máximo.",
+      "placeholder": "tu@ejemplo.com",
+      "submit": "Suscribirse",
+      "done": "OK — anotado."
+    }
+  },
+  "links": {
+    "title": "Sacha DVR"
+  },
+  "repo": {
+    "loading": "git clone {{repo}}",
+    "notFound": "fatal: repository '{{repo}}' not found",
+    "noDescription": "Sin descripción para este proyecto.",
+    "noReadme": "_No se ha encontrado ningún README.md._",
+    "openGithub": "Abrir en GitHub",
+    "starsTitle": "Estrellas de GitHub de {{repo}}",
+    "metadata": "~/metadata"
+  },
+  "notFound": {
+    "path": "cd /pagina-no-encontrada",
+    "stderr": "bash: no such file or directory",
+    "message": "La página que buscas no existe (o ya no existe)."
+  },
+  "legal": {
+    "disclaimer": "Traducción de cortesía. Solo la versión francesa tiene valor legal; en caso de discrepancia, prevalece el texto francés.",
+    "cgu": {
+      "title": "Condiciones de uso",
+      "intro": "Bienvenido a <b>SachaDVR - CV & Portfolio</b> (en adelante, el «Sitio»). Este Sitio es una plataforma personal y profesional cuyo objetivo es presentar los proyectos y competencias de su autor, así como servir de escaparate de sus realizaciones.",
+      "listIntro": "El Sitio ofrece acceso a diversos contenidos, en particular:",
+      "item1": "Un <b>portafolio</b> que reúne los proyectos realizados;",
+      "item2": "Enlaces a proyectos de <b>GitHub</b> y a otras plataformas relevantes;",
+      "item3": "Un <b>CV interactivo</b> destinado a destacar la experiencia y las competencias.",
+      "audience": "El Sitio es accesible para cualquier tipo de usuario: particulares, empresas, reclutadores u otras partes interesadas, sea cual sea su lugar de conexión. El uso del Sitio se rige por las presentes <b>Condiciones Generales de Uso</b>, que cada usuario se compromete a respetar al navegar por el Sitio.",
+      "disagreement": "En caso de desacuerdo con una o varias de las disposiciones de las presentes <b>Condiciones de uso</b>, se recomienda dejar de utilizar el Sitio de inmediato."
+    },
+    "cgv": {
+      "title": "Condiciones de venta",
+      "intro": "Las presentes <b>Condiciones Generales de Venta</b> rigen las modalidades de prestación de los servicios ofrecidos por SachaDVR, desarrollador independiente, a sus clientes.",
+      "scope": "Aunque el Sitio SachaDVR - CV & Portfolio (en adelante, el «Sitio») sirve principalmente de escaparate para los proyectos y competencias de su autor, también puede ser utilizado por clientes potenciales para ponerse en contacto con vistas a una colaboración. Las prestaciones ofrecidas incluyen, sin limitarse a ello, servicios de <b>desarrollo web</b>, creación de software o cualquier otra actividad relacionada con el desarrollo informático.",
+      "process": "Toda solicitud de prestación o de colaboración deberá realizarse mediante un intercambio directo entre el prestador y el cliente (por correo electrónico, teléfono o cualquier otro medio acordado). Las presentes Condiciones de venta se aplican a todas las prestaciones acordadas en este marco, aunque no se formalicen a través del Sitio.",
+      "changes": "El prestador se reserva el derecho de modificar las presentes Condiciones de venta en cualquier momento. Toda modificación será comunicada a los clientes antes de la entrada en vigor de las nuevas disposiciones."
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Sacha Duvivier — Desarrollador Fullstack Freelance & Full Remote",
+      "description": "Portafolio de Sacha Duvivier, desarrollador fullstack (Symfony, Vue 3, TypeScript, Docker, Kubernetes), disponible en freelance o tiempo completo, full remote o con reubicación (Asia, Australia, Singapur…). Máster en Cyber, top de su promoción. Proyectos open source y contacto directo."
+    },
+    "links": {
+      "title": "Enlaces y redes — Sacha Duvivier",
+      "description": "Todas las formas de contactar con Sacha Duvivier, desarrollador fullstack freelance/tiempo completo en full remote: GitHub, LinkedIn, correo y redes sociales."
+    },
+    "cgu": {
+      "title": "Condiciones de uso — Sacha Duvivier",
+      "description": "Condiciones Generales de Uso de sachadvr.fr, el portafolio de Sacha Duvivier, desarrollador fullstack francés."
+    },
+    "cgv": {
+      "title": "Condiciones de venta — Sacha Duvivier",
+      "description": "Condiciones Generales de Venta de los servicios de desarrollo web ofrecidos por Sacha Duvivier, desarrollador independiente francés."
+    },
+    "repo": {
+      "title": "{{repo}} — un proyecto de Sacha Duvivier",
+      "description": "Detalle del proyecto open source {{repo}}, desarrollado por Sacha Duvivier, desarrollador fullstack freelance/tiempo completo en full remote."
+    },
+    "notFound": {
+      "title": "Página no encontrada — Sacha Duvivier",
+      "description": "Esta página no existe o ya no existe en sachadvr.fr."
+    }
+  }
+}

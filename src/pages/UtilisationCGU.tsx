@@ -1,19 +1,27 @@
 import React from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Main from '../components/Main'
-import CGU from '../components/CGU'
-import WhoAmi from '../components/WhoAmi'
+import { useTranslation } from 'react-i18next'
 
+import CGU from '@/components/CGU'
+import Footer from '@/components/Footer'
+import Seo from '@/components/Seo'
+import StructuredData from '@/components/StructuredData'
 
+const UtilisationCGU = () => {
+  const { t } = useTranslation()
 
-const Home = () => {
   return (
     <>
-    <Header />
-    <CGU />
-    <Footer />
+      <Seo page="cgu" path="/cgu" />
+      <StructuredData
+        breadcrumb={[
+          { name: t('seo.home.title'), path: '/' },
+          { name: t('legal.cgu.title'), path: '/cgu' },
+        ]}
+      />
+      <CGU />
+      <Footer />
     </>
   )
 }
-export default Home
+
+export default UtilisationCGU

@@ -1,37 +1,378 @@
+@import './fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import 'src/colors';
+/* ------------------------------------------------------------------------- */
+/* Design system — art direction blacksmith.sh (cf. DESIGN.md).              */
+/*                                                                           */
+/* Palettes strictement restreintes :                                        */
+/*   --accent  #22B1D8 surfaces d'accent                                    */
+/*   --ink     #181818  texte + bordures                                     */
+/*   --paper   #F2F2F2  fond de page                                         */
+/*   --panel   #E6E6E6  panneaux / fausses fenêtres                          */
+/*   --sky     #A8DFF5  surlignage technique (code)                          */
+/* Jamais de noir/blanc purs, rayons nuls sauf pills (999px), ombres dures.  */
+/* ------------------------------------------------------------------------- */
 
-@font-face {
-    font-family: 'Quicksand';
-    src: url(./ressources/Quicksand.ttf);
+@layer base {
+  :root {
+    --background: 0 0% 95%; /* paper #F2F2F2 */
+    --foreground: 0 0% 9%; /* ink #181818 */
 
+    --card: 0 0% 90%; /* panel #E6E6E6 */
+    --card-foreground: 0 0% 9%;
+
+    --popover: 0 0% 95%;
+    --popover-foreground: 0 0% 9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 193 73% 49%; /* accent #22B1D8 */
+
+    --secondary: 0 0% 90%; /* panel */
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 41%;
+
+    --accent: 193 73% 49%; /* accent #22B1D8 — uniforme, toutes langues */
+    --accent-foreground: 0 0% 9%;
+
+    --sky: 196 79% 81%; /* blue #A8DFF5 */
+
+    --destructive: 8 89% 60%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 9%;
+    --input: 0 0% 9%;
+    --ring: 0 0% 9%;
+
+    --shadow-color: 0 0% 9%;
+
+    --radius: 0px;
+    --radius-window: 0px;
+    --radius-soft: 0px;
+
+    /* Padding horizontal de page : presque pleine largeur. */
+    --page-x: clamp(24px, 4vw, 88px);
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 193 73% 49%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 62%;
+
+    --accent: 193 73% 49%; /* accent #22B1D8 — uniforme, toutes langues */
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 8 89% 60%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 0 0% 95%;
+
+    --shadow-color: 0 0% 90%;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-width: 0;
+  }
+
+  h1,
+  h2 {
+    @apply font-display font-semibold;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+  }
+
+  h3,
+  h4 {
+    @apply font-display font-semibold;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
 }
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Quicksand', sans-serif;
-  outline: none;
+
+@layer components {
+  .brutal-box {
+    @apply rounded-soft border border-border bg-card text-card-foreground shadow-brutal-sm;
+  }
+
+  .window-box {
+    @apply overflow-hidden rounded-window border border-border bg-card text-card-foreground shadow-brutal;
+  }
+
+  .window-chrome {
+    @apply relative flex items-center gap-2 border-b border-border bg-secondary px-4 text-secondary-foreground;
+  }
+
+  .window-chrome-dot {
+    @apply h-3.5 w-3.5 shrink-0 rounded-pill bg-ink;
+  }
+
+  .dotted-box {
+    @apply rounded-soft border border-dotted border-border bg-card text-card-foreground;
+  }
+
+  .dotted-interactive {
+    @apply transition-[transform,box-shadow] duration-100
+      hover:-translate-x-[3px] hover:-translate-y-[3px] hover:border-solid hover:shadow-brutal
+      active:translate-x-0 active:translate-y-0 active:shadow-brutal-sm;
+  }
+
+  .sticker {
+    @apply inline-flex w-fit items-center gap-2 rounded-pill border border-border px-3 py-1
+      font-mono text-xs font-medium uppercase tracking-[0.5px] shadow-brutal-sm;
+  }
+
+  .highlight {
+    @apply bg-accent px-1 font-semibold text-accent-foreground;
+  }
+
+  .tech-label {
+    @apply inline-flex items-center gap-1.5 rounded-soft border border-border bg-card px-2 py-1
+      font-mono text-[10px] font-medium uppercase leading-none tracking-[0.5px];
+  }
+
+  .brutal-interactive {
+    @apply transition-[transform,box-shadow] duration-100
+      hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-brutal-lg
+      active:translate-x-0 active:translate-y-0 active:shadow-brutal-sm;
+  }
+
+  .terminal-prompt::before {
+    content: "$ ";
+    @apply text-accent font-bold;
+  }
+
+  .section-label {
+    @apply inline-flex w-fit items-center gap-2 rounded-pill border border-border bg-primary px-3 py-1
+      font-mono text-xs font-medium uppercase tracking-[0.5px] text-primary-foreground shadow-brutal-sm;
+  }
+
+  .dot-pattern-strip {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.25) 1px, transparent 1px);
+    background-size: 5px 5px;
+  }
+
+  /* ------------------------------------------------------------------------- */
+  /* Hero & formules blacksmith — cf. DESIGN.md.                                 */
+  /*                                                                           */
+  /* Reprise du langage de blacksmith.sh : section jaune pleine largeur,        */
+  /* surlignage de code bleu, badge rotatif, marquee infini. La section jaune   */
+  /* suit `--accent` (donc la nuance par langue), le bleu du code reste `--sky`. */
+  /* ------------------------------------------------------------------------- */
+
+  .section-crimson {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  /* Pastille de code (sur une section jaune, le jaune `highlight` disparaîtrait). */
+  .highlight-blue {
+    @apply bg-sky px-1 font-semibold text-ink;
+  }
+
+  /* Ligne de code du terminal héro : bloc bleu rempli, mono, encre. */
+  .highlight-code {
+    @apply flex max-w-full items-start bg-sky px-2 py-0.5 font-mono font-medium leading-relaxed text-ink;
+  }
+
+  /* Colonne du terminal héro : lignes bleues empilées, écart 4px comme blacksmith. */
+  .terminal-hero {
+    @apply flex w-full max-w-xl flex-col items-start gap-1;
+  }
+
+  /* Badge rotatif (équivalent du badge SOC2) : disque enclé, spin lent. */
+  .hero-badge {
+    @apply grid h-[72px] w-[72px] shrink-0 place-items-center rounded-pill border border-ink bg-card text-ink shadow-brutal-sm;
+  }
+
+  /* Masque d'estompage latéral pour les marquees (logos, bandeaux). */
+  .marquee-mask {
+    @apply overflow-hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  /* Padding latéral de page : presque toute la largeur du viewport. */
+  .page-x {
+    padding-inline: var(--page-x);
+  }
+
+  /* Pastille d'encre (bandeau ticker) : badge noir, texte jaune, rayon 2px. */
+  .ticker-chip {
+    @apply inline-flex items-center gap-1 rounded-[2px] bg-ink px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.05em] text-crimson;
+  }
+
+  /* Message technique : ligne mono capitale, retour sobre (pas de rayon). */
+  .mono-label {
+    @apply font-mono text-xs font-semibold uppercase tracking-[0.05em];
+  }
 }
-::selection {
-  background-color: #000;
-  color: white;
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .bg-scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      hsl(var(--foreground) / 0.04) 0px,
+      hsl(var(--foreground) / 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.3) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+  }
+
+  /* Surface de points — motif technique blacksmith. Densité pilotée par
+     `--dot-size` ; variantes dense (6px) / sparse (20-24px). */
+  .dot-surface {
+    --dot-size: 12px;
+    background-image: radial-gradient(circle, rgba(24, 24, 24, 0.75) 0.55px, transparent 0.7px);
+    background-size: var(--dot-size, 12px) var(--dot-size, 12px);
+  }
+
+  .dot-surface--dense {
+    --dot-size: 6px;
+  }
+
+  .dot-surface--sparse {
+    --dot-size: 20px;
+  }
+
+  .dot-surface--sparse-lg {
+    --dot-size: 24px;
+  }
 }
-body {
-  // min-height: 100vh;
-  // min-height: -webkit-fill-available;
-  min-width: 0;
+
+.markdown-body {
+  @apply font-mono text-sm;
+  background-color: transparent !important;
 }
-html {
-  scroll-behavior: smooth;
-  height: -webkit-fill-available;
-}
-a {
-  text-decoration: none;
-}
-ul {
-  list-style: none;
+
+/* ------------------------------------------------------------------------- */
+/* Accent : UNE SEULE teinte (#22B1D8), toutes langues confondues.           */
+/* L'animation par langue a été abandonnée pour l'art direction graphify      */
+/* (crimson unique exigé), sauf la densité qui reste pilotée par `data-density` */
+/* (cf. DESIGN.md § 8).                                                       */
+/* ------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------- */
+/* Densité par langue — cf. DESIGN.md § 8                                     */
+/*                                                                           */
+/* `data-density="compact"` est posé sur <html> pour zh / ja, dont les marchés */
+/* attendent des interfaces denses en information. La variation ne porte que   */
+/* sur l'espacement, la taille de texte et la quantité d'infos visibles :      */
+/* couleurs, ombres, bordures et rayons sont identiques dans toutes les        */
+/* langues. Règles volontairement écrites hors `@layer` : elles doivent passer */
+/* après les utilitaires Tailwind qu'elles resserrent.                        */
+/* ------------------------------------------------------------------------- */
+
+[data-density="compact"] {
+  .section-block {
+    @apply py-12;
+  }
+
+  .section-heading {
+    @apply mb-5 gap-2;
+  }
+
+  .rk-sheet-head {
+    @apply px-3 py-2.5 sm:px-4;
+  }
+
+  .rk-field {
+    @apply sm:grid-cols-[9rem_minmax(0,1fr)];
+  }
+
+  .rk-field-label {
+    @apply px-3 py-1.5 sm:py-2.5;
+  }
+
+  .rk-field-value {
+    @apply px-3 py-2 sm:py-2.5;
+  }
+
+  .rk-log-cell {
+    @apply px-2 py-2;
+  }
+
+  .rk-log-entry {
+    @apply gap-1 px-2 py-2;
+  }
+
+  /* Moins de troncature : le nom du projet passe à la ligne au lieu d'être coupé. */
+  .rk-log-entry .truncate {
+    @apply overflow-visible whitespace-normal text-clip;
+  }
+
+  .featured-card-body {
+    @apply p-4;
+  }
+
+  .tech-label {
+    @apply gap-1 px-1.5 py-0.5;
+  }
+
+  /* Corps de texte resserré à l'intérieur des feuilles et fenêtres. */
+  .window-box .text-sm {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .window-box .leading-relaxed {
+    line-height: 1.5;
+  }
 }

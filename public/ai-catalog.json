@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schema.org/",
+  "name": "Sacha Duvivier — Portfolio",
+  "url": "https://sachadvr.fr",
+  "description": "Portfolio of Sacha Duvivier, a fullstack developer based in Lille, France, open to freelance or full-time roles, full remote or relocation (Asia, Australia, Singapore…).",
+  "languages": ["fr", "en", "es", "zh", "ja"],
+  "contact": {
+    "email": "contact@sachadvr.fr",
+    "github": "https://github.com/sachadvr",
+    "linkedin": "https://www.linkedin.com/in/sachadvr/"
+  },
+  "actions": []
+}

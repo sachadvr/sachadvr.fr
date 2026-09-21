@@ -1,0 +1,219 @@
+{
+  "common": {
+    "city": "Lille",
+    "country": "France",
+    "back": "Back",
+    "backHome": "Back to home",
+    "scrollTop": "Scroll back to top",
+    "photoAlt": "Sacha Duvivier",
+    "languageSwitcher": "Change language",
+    "currentLanguage": "Current language: {{language}}"
+  },
+  "person": {
+    "jobTitle": "French Fullstack Developer",
+    "location": "Full remote · open to relocating (Asia, Australia, Singapore…)",
+    "summary": "Sacha Duvivier is a French fullstack developer based in $t(common.city), $t(common.country), open to freelance or full-time roles, full remote or relocation (Asia, Australia, Singapore…). He builds with Symfony, Vue 3, TypeScript and Docker, and holds an MSc in Cyber (top of class)."
+  },
+  "hero": {
+    "badge": "available / freelance & full-time · full remote",
+    "role": "Fullstack developer. MSc in Cyber. Freelance or full-time, full remote.",
+    "kicker": "Rirekisho · CV & portfolio · 2026",
+    "mark": "CV",
+    "lead": "Fullstack developer with an MSc in Cyber (top of class). I build applications end to end: frontend, API, backoffice, infrastructure.",
+    "diffBefore": "status: on a mission",
+    "diffAfter": "availability: freelance & full-time · full remote",
+    "ctaContact": "Get in touch",
+    "ctaPortfolio": "View portfolio",
+    "statsActive": "Active projects",
+    "statsTotal": "Published projects",
+    "sync": "Sync github",
+    "live": "live",
+    "scroll": "Scroll",
+    "terminalLabel": "Terminal — Sacha Duvivier, available fullstack developer",
+    "codeLine1": "$ cat ~/rirekisho.yaml",
+    "typed": [
+      "name: Sacha Duvivier",
+      "role: fullstack — freelance · full-time · full remote"
+    ],
+    "disclaimer": "available — replies within 48h, no strings attached",
+    "marqueeTitle": "Toolbox · technologies"
+  },
+  "nav": {
+    "skills": "Skills",
+    "work": "Projects",
+    "timeline": "Timeline",
+    "contact": "Contact"
+  },
+  "ticker": {
+    "active": "ACTIVE",
+    "total": "TOTAL",
+    "projectsActif": "active projects",
+    "projectsTotal": "published projects",
+    "master": "MASTER 01",
+    "masterLabel": "cyber — top of class",
+    "location": "LILLE",
+    "locationLabel": "france · full remote",
+    "delay": "48H",
+    "delayLabel": "replies within 48 h"
+  },
+  "sections": {
+    "skills": "Skills",
+    "work": "Featured projects",
+    "timeline": "Career",
+    "metrics": "Metrics",
+    "contact": "Contact"
+  },
+  "metric": {
+    "total": "published projects",
+    "active": "active projects",
+    "master": "msc in cyber — top of class",
+    "delay": "replies within 48 h",
+    "title": "Deliverables, not promises.",
+    "subtitle": "Real numbers, live from the GitHub account — not inflated marketing."
+  },
+  "rirekisho": {
+    "docTitle": "Résumé",
+    "updated": "Updated",
+    "fieldName": "Name",
+    "fieldRole": "Role",
+    "fieldLocation": "Address",
+    "fieldEmail": "Email",
+    "fieldStatus": "Status",
+    "fieldLinks": "Links",
+    "fieldEducation": "Education",
+    "fieldInterests": "Interests",
+    "fieldStack": "Stack",
+    "sheetSkills": "Skills & qualifications",
+    "sheetProjects": "Project history",
+    "sheetFreeText": "Free text",
+    "colYear": "Year",
+    "colMonth": "Month",
+    "colEntry": "Entry",
+    "colActivity": "Activity",
+    "entries": "entries"
+  },
+  "whoami": {
+    "title": "Who am I?",
+    "bio": "<b>MSc in Cyber</b> (dev & security), top of class, Université catholique de Lille ($t(common.country)). Fullstack developer on a work-study program at <b>Alice's Garden</b> (high-traffic e-commerce platform), building back-end and front-end features end to end.",
+    "techFrontend": "Backend",
+    "techFrontendValue": "Symfony (services, custom bundles), API Platform (JWT/OAuth), serverless AWS Lambdas (Bref), Doctrine ORM (MariaDB/MySQL).",
+    "techDevops": "Frontend & DevOps",
+    "techDevopsValue": "Vue 3 (Composition API, Pinia), Docker, CI/CD pipelines, Kubernetes basics (pods, kubectl, k9s).",
+    "techInterests": "Strong interest in cybersecurity, AI/ML and solid architecture practices (SOLID, PHPUnit/Behat testing).",
+    "stackLoading": "loading technologies"
+  },
+  "featured": {
+    "title": "Featured projects",
+    "loading": "selecting featured projects",
+    "labelMain": "Featured project",
+    "labelRepo": "View repo",
+    "stars": "stars",
+    "allProjects": "All projects",
+    "clone": "git clone {{repo}}"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "loading": "fetching projects",
+    "noDescription": "No description for this project.",
+    "subtitle": "Every entry is a public GitHub repository, oldest to newest. Rows link to the project page.",
+    "subtitleCompact": "Public repos, oldest to newest."
+  },
+  "contact": {
+    "title": "Contact me",
+    "heading": "Let's work together",
+    "intro": "A question, a project, an opportunity? Fill in the form, or email me directly at <mail>{{email}}</mail>.",
+    "labelName": "Company or individual",
+    "placeholderName": "Name",
+    "labelEmail": "E-mail",
+    "placeholderEmail": "you@example.com",
+    "labelPhone": "Phone",
+    "placeholderPhone": "+33 6 00 00 00 00",
+    "labelMessage": "Message",
+    "placeholderMessage": "Your message...",
+    "submit": "Send",
+    "statusIdle": "form ready to send",
+    "statusSending": "sending...",
+    "statusSent": "message sent. Reply within 48h.",
+    "statusError": "sending failed. Please try again later."
+  },
+  "footer": {
+    "rights": "© {{year}} Sacha DVR — all rights reserved",
+    "tagline": "CV & portfolio — designed, tested and shipped by Sacha DVR.",
+    "cgu": "Terms of Use",
+    "cgv": "Terms of Sale",
+    "links": "Links",
+    "navTitle": "Navigation",
+    "legalTitle": "Legal",
+    "socialsTitle": "Socials",
+    "newsletter": {
+      "title": "Stay in the loop",
+      "subtitle": "Open source projects & availability — one email a month max.",
+      "placeholder": "you@example.com",
+      "submit": "Subscribe",
+      "done": "OK — noted."
+    }
+  },
+  "links": {
+    "title": "Sacha DVR"
+  },
+  "repo": {
+    "loading": "git clone {{repo}}",
+    "notFound": "fatal: repository '{{repo}}' not found",
+    "noDescription": "No description for this project.",
+    "noReadme": "_No README.md found._",
+    "openGithub": "Open on GitHub",
+    "starsTitle": "GitHub stars for {{repo}}",
+    "metadata": "~/metadata"
+  },
+  "notFound": {
+    "path": "cd /page-not-found",
+    "stderr": "bash: no such file or directory",
+    "message": "The page you are looking for does not exist (anymore)."
+  },
+  "legal": {
+    "disclaimer": "Courtesy translation. Only the French version is legally binding; in case of discrepancy, the French text prevails.",
+    "cgu": {
+      "title": "Terms of Use",
+      "intro": "Welcome to <b>SachaDVR - CV & Portfolio</b> (hereinafter the \"Site\"). This Site is a personal and professional platform whose purpose is to present its author's projects and skills, and to act as a showcase for his work.",
+      "listIntro": "The Site gives access to various content, in particular:",
+      "item1": "A <b>portfolio</b> gathering completed projects;",
+      "item2": "Links to <b>GitHub</b> projects and other relevant platforms;",
+      "item3": "An <b>interactive CV</b> highlighting experience and skills.",
+      "audience": "The Site is accessible to any type of user: individuals, companies, recruiters or other interested parties, regardless of where they connect from. Use of the Site is governed by these <b>Terms of Use</b>, which every user undertakes to comply with when browsing the Site.",
+      "disagreement": "Should you disagree with one or more of the provisions of these <b>Terms of Use</b>, you are advised to immediately stop using the Site."
+    },
+    "cgv": {
+      "title": "Terms of Sale",
+      "intro": "These <b>Terms of Sale</b> govern the provision of the services offered by SachaDVR, freelance developer, to his clients.",
+      "scope": "Although the SachaDVR - CV & Portfolio Site (hereinafter the \"Site\") primarily serves as a showcase for its author's projects and skills, it may also be used by prospective clients to get in touch with a view to a collaboration. The services offered include, but are not limited to, <b>web development</b> services, software creation and any other activity related to software development.",
+      "process": "Any request for services or collaboration must be made through direct exchange between the provider and the client (by email, phone, or any other agreed means). These Terms of Sale apply to all services agreed in this context, even if they are not formalised through the Site.",
+      "changes": "The provider reserves the right to amend these Terms of Sale at any time. Any amendment will be communicated to clients before the new provisions take effect."
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Sacha Duvivier — Freelance & Full Remote Fullstack Developer",
+      "description": "Portfolio of Sacha Duvivier, fullstack developer (Symfony, Vue 3, TypeScript, Docker, Kubernetes), available freelance or full-time, full remote or relocation (Asia, Australia, Singapore…). MSc in Cyber, top of class. Open source projects and direct contact."
+    },
+    "links": {
+      "title": "Links & social — Sacha Duvivier",
+      "description": "Every way to reach Sacha Duvivier, freelance/full-time fullstack developer working full remote: GitHub, LinkedIn, e-mail and social networks."
+    },
+    "cgu": {
+      "title": "Terms of Use — Sacha Duvivier",
+      "description": "Terms of Use of sachadvr.fr, the portfolio of Sacha Duvivier, French fullstack developer."
+    },
+    "cgv": {
+      "title": "Terms of Sale — Sacha Duvivier",
+      "description": "Terms of Sale for the web development services offered by Sacha Duvivier, French freelance developer."
+    },
+    "repo": {
+      "title": "{{repo}} — a project by Sacha Duvivier",
+      "description": "Details of the open source project {{repo}}, built by Sacha Duvivier, freelance/full-time fullstack developer working full remote."
+    },
+    "notFound": {
+      "title": "Page not found — Sacha Duvivier",
+      "description": "This page does not exist, or no longer exists, on sachadvr.fr."
+    }
+  }
+}
