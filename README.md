@@ -81,6 +81,24 @@ Le site est servi en 5 langues : français (défaut), anglais, espagnol, chinois
 
 Après ajout d'une page ou d'une langue : mettre à jour `LANGUAGES` dans `src/i18n/config.ts`, les routes dans `src/App.tsx`, `public/sitemap.xml` et `public/llms.txt`.
 
+<h2>📄 GitHub Pages (sous-chemin)</h2>
+
+Le workflow `.github/workflows/deploy-pages.yml` (push sur `main` ou lancement manuel) build et publie le site sur https://sachadvr.github.io/sachadvr.fr/.
+
+*   Deux variables d'environnement de build, lues par `vite.config.ts` :
+    *   `BASE_PATH` (défaut `/`) : `base` de Vite et `basename` de react-router. Les préfixes de langue se placent dessous (`/sachadvr.fr/en/cgu`).
+    *   `SITE_URL` (origine publique, défaut : domaine `https://sachadvr.fr` sans base) : les URLs absolues SEO (canonical, hreflang, Open Graph, JSON-LD) valent `SITE_URL` + `BASE_PATH`. Le domaine `https://sachadvr.fr` codé en dur dans `index.html`, `robots.txt`, `sitemap.xml`, `llms.txt` et `ai-catalog.json` est réécrit vers cette URL au build.
+*   Sur Pages, ces valeurs viennent de `actions/configure-pages` (`base_path`, `origin`), surchargeables par les variables de dépôt `vars.BASE_PATH` / `vars.SITE_URL` (ex. `SITE_URL=https://sachadvr.fr` pour garder le canonical sur le domaine principal). Avec un domaine personnalisé, `base_path` est vide : le site repasse à la racine sans autre changement.
+*   Pages n'a pas de réécriture SPA : le workflow copie `dist/index.html` en `dist/404.html`, servi pour toute URL profonde (avec un statut HTTP 404).
+*   Liens internes : toujours des chemins applicatifs (`<LocalizedLink to="/cgu">`), jamais `/sachadvr.fr` en dur. Hors routeur, utiliser `withBasePath` / `stripBasePath` de `src/lib/base-path.ts`.
+*   Docker/nginx et le build par défaut sont inchangés (`BASE_PATH=/`).
+
+```bash
+# Reproduire le build Pages en local
+BASE_PATH=/sachadvr.fr/ SITE_URL=https://sachadvr.github.io npm run build
+npm test   # helpers de chemin de base (node --test, Node >= 22.18)
+```
+
 <h2>💖Like my work?</h2>
 
 If you have any inquiries please do not hesitate to contact me at contact@sachadvr.fr
