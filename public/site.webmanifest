@@ -3,22 +3,23 @@
   "name": "SachaDVR - CV & Portfolio",
   "icons": [
     {
-      "src": "/src/images/favicon-16x16.png",
+      "src": "favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "/src/images/favicon-32x32.png",
+      "src": "favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/src/images/apple-touch-icon.png",
+      "src": "apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
