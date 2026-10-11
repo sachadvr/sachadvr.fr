@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LANGUAGES, languagePrefix } from '@/i18n/config'
 import LanguageLayout from '@/i18n/LanguageLayout'
 import AccentTuner from '@/components/AccentTuner'
+import { routerBasename } from '@/lib/base-path'
 import Home from '@/pages/Home'
 
 // Home reste en statique : c'est la route d'entrée, la découper retarderait le LCP.
@@ -16,7 +17,7 @@ const UtilisationCGV = lazy(() => import('@/pages/UtilisationCGV'))
 function App(): JSX.Element {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename(import.meta.env.BASE_URL)}>
         <Suspense fallback={null}>
           <AccentTuner />
           <Routes>

@@ -8,7 +8,12 @@
  * entier sur une autre ville.
  */
 export const SITE = {
-  url: 'https://sachadvr.fr',
+  /**
+   * URL racine publique, sans slash final : origine + chemin de base du déploiement,
+   * injectée au build par vite.config.ts (`SITE_URL` + `BASE_PATH`, défaut
+   * `https://sachadvr.fr`). Sur GitHub Pages : `https://sachadvr.github.io/sachadvr.fr`.
+   */
+  url: import.meta.env.VITE_SITE_URL,
   name: 'Sacha Duvivier',
   shortName: 'SachaDVR',
   email: 'contact@sachadvr.fr',
