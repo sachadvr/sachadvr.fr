@@ -1,0 +1,355 @@
+
+
+.links-basic-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(37, 37, 37);
+	background-size: cover;
+	background-attachment: fixed;
+	height: 100dvh;
+	width: 100%;
+	overflow: hidden;
+
+    @keyframes animated-gradient {
+        25% {
+            background-position: left bottom;
+        }
+        50% {
+            background-position: right bottom;
+        }
+        75% {
+            background-position: right top;
+        }
+        100% {
+            background-position: left top;
+        }
+    }
+    @keyframes cardfromleft {
+        0% {
+            transform: translateX(100px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes sweep {
+        0% {
+            opacity: 0;
+            margin-left: -10px;
+        }
+        100% {
+            opacity: 1;
+            margin-left: 0px;
+        }
+    }
+    
+    .pic {
+        #img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: url(../images/photo.jpg);
+            background-size: 100%;
+        }
+        display: inline-block;
+        padding: 8px;
+        background: linear-gradient(130deg, #303030, #ffffff);
+        margin: auto;
+        border-radius: 50%;
+        background-size: 200% 200%;
+        animation: animated-gradient 2s linear infinite;
+        img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    }
+    .profile-card {
+        text-align: center;
+        overflow: hidden;
+        transition: all .3s linear;
+        background-color: rgb(37, 37, 37);
+        animation: cardfromleft 1s;
+        box-shadow: 10px 10px 30px 2px black;
+        margin-top: 0px;
+        border-radius: 8px;
+        max-width: 400px;
+        width: 90%;
+    }
+    .card-header {
+        background: #ffffff00;
+        padding: 60px 40px;
+        position: relative;
+        transition: .3s;
+        &:hover {
+            background-color: #00000015;
+        }
+    }
+    .name {
+        color: #f2f2f2;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 10px 0;
+    }
+    .mail {
+        a {
+            font-size: 18px;
+            color: #b9fafa;
+        }
+    }
+    .sm-box {
+        position: relative;
+    }
+    .sm {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        position: relative;
+        a {
+            color: #f2f2f2;
+            width: 56px;
+            font-size: 22px;
+            transition: .3s linear;
+            padding: 5px;
+            border-bottom: solid 3px #b9fafa;
+            &:hover {
+                color: #b9fafa;
+                border-bottom: solid 3px white;
+                width: 15%;
+            }
+        }
+    }
+    .contact-btn {
+        display: inline-block;
+        padding: 12px 50px;
+        color: #b9fafa;
+        border: 2px solid #b9fafa;
+        border-radius: 6px;
+        margin-top: 16px;
+        transition: .3s linear;
+        &:hover {
+            background: #b9fafa;
+            color: #f2f2f2;
+        }
+    }
+    .card-footer {
+        background: #f4f4f4;
+        padding: 40px 10px;
+    }
+    .numbers {
+        display: flex;
+        align-items: center;
+    }
+    .item {
+        flex: 1;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #e66767;
+        span {
+            display: block;
+            color: #2c3a47;
+            font-size: 30px;
+        }
+    }
+    .border {
+        width: 1px;
+        height: 30px;
+        background: #bbb;
+    }
+    a.close {
+        font-size: 13px;
+        padding: 6px 10px 6px 10px;
+        text-align: center;
+        float: right;
+        color: darkgray;
+        cursor: pointer;
+        &:hover {
+            color: rgb(117, 116, 114);
+            background-color: rgb(196, 196, 196);
+            border-radius: 4px;
+            transition: .3s;
+        }
+        &:active {
+            color: orange;
+            background-color: white;
+        }
+    }
+    .container {
+        overflow: hidden;
+        margin-left: 50px;
+        padding: 20px 15px 20px 15px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 8px;
+        margin-top: -50px;
+        display: block;
+        width: 45%;
+        transition: all .3s;
+        opacity: 0.9;
+        h2 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            padding: 3px;
+            span {
+                background-color: rgb(236, 103, 103);
+                color: rgb(255, 255, 255);
+                padding: 4px;
+            }
+        }
+        p {
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding: 5px;
+        }
+    }
+    details[open] {
+        summary {
+            border-bottom: 1px solid #aaa;
+            margin-bottom: .5em;
+            ~ {
+                * {
+                    padding-left: 8px;
+                    animation: sweep 1s ease-in-out;
+                }
+            }
+        }
+    }
+    details {
+        summary {
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+    h1 {
+        padding-bottom: 10px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .othercontent {
+        clear: both;
+        width: 100%;
+        margin: auto;
+        margin-top: 30px;
+        padding: 50px 0px 50px 0px;
+        text-align: center;
+        align-items: center;
+        overflow: hidden;
+        p {
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            line-height: 1.6;
+            text-align: center;
+        }
+    }
+    #red {
+        background: rgb(255,255,255);
+    }
+    input {
+        cursor: pointer;
+        outline: none;
+        width: 150px;
+        padding: 4px;
+        vertical-align: top;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: rgb(241, 226, 226);
+        border: 0px white;
+        &:hover {
+            background-color: rgb(255, 146, 146);
+            border: solid 1px rgb(255, 255, 255);
+            transition: .5s;
+        }
+        &:focus {
+            background-color: white;
+            border-radius: 15px;
+            transition: .5s;
+        }
+    }
+    textarea {
+        cursor: pointer;
+        outline: none;
+        width: 150px;
+        padding: 4px;
+        vertical-align: top;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: rgb(241, 226, 226);
+        border: 0px white;
+        width: 200px;
+        height: 5em;
+        padding: 15px;
+        resize: vertical;
+        &:hover {
+            background-color: rgb(255, 146, 146);
+            border: solid 1px rgb(255, 255, 255);
+            transition: .5s;
+        }
+        &:focus {
+            background-color: white;
+            border-radius: 15px;
+            transition: .5s;
+        }
+    }
+    #sujet {
+        width: 250px;
+    }
+    label {
+        display: inline-block;
+        width: 200px;
+        margin-right: 20px;
+        vertical-align: top;
+        text-align: right;
+    }
+    form {
+        p {
+            padding-top: 10px;
+        }
+        width: 60%;
+        margin: auto;
+        margin-top: 15px;
+        background-color: rgb(247, 141, 141);
+        border: 0px solid white;
+        border-radius: 2px;
+        overflow: scroll;
+    }
+    footer {
+        clear: both;
+        width: 100%;
+        margin: auto;
+        margin-top: 0px;
+        padding: 10px 0px 10px 0px;
+        text-align: center;
+        align-items: center;
+    }
+    #back {
+        a {
+            i {
+                color: white;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                margin: 10px 10px 10px 10px;
+                opacity: 0.3;
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .profile-card {
+            margin-top: 30px;
+        }
+        .links-basic-content {
+            align-items: flex-start;
+        }
+    }
+    
+}

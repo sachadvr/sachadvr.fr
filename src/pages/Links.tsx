@@ -1,123 +1,53 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import {
-  FaChevronLeft,
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaGithub,
-  FaInstagram,
-  FaSnapchatGhost,
-  FaYoutube,
-  FaPinterest,
-} from 'react-icons/fa'
-
-import LanguageSwitcher from '@/components/LanguageSwitcher'
-import LocalizedLink from '@/components/LocalizedLink'
-import ProfilePhoto from '@/components/ProfilePhoto'
-import Seo from '@/components/Seo'
-import StructuredData from '@/components/StructuredData'
-import TerminalWindow from '@/components/TerminalWindow'
-import { Button } from '@/components/ui/button'
-import { SITE } from '@/i18n/site'
-
-const SOCIAL_LINKS = [
-  { href: 'https://github.com/sachadvr', label: 'GitHub', handle: '@sachadvr', Icon: FaGithub },
-  {
-    href: 'https://www.linkedin.com/in/sachadvr/',
-    label: 'LinkedIn',
-    handle: 'Sacha Duvivier',
-    Icon: FaLinkedinIn,
-  },
-  { href: 'https://twitter.com/SachaDvr', label: 'Twitter', handle: '@SachaDvr', Icon: FaTwitter },
-  {
-    href: 'https://instagram.com/sachadvr',
-    label: 'Instagram',
-    handle: '@sachadvr',
-    Icon: FaInstagram,
-  },
-  {
-    href: 'https://www.facebook.com/profile.php?id=100010069578181',
-    label: 'Facebook',
-    handle: 'Sacha Duvivier',
-    Icon: FaFacebookF,
-  },
-  {
-    href: 'https://www.youtube.com/channel/UCNDLN4TdHwS_o1Z6SPiO15w',
-    label: 'YouTube',
-    handle: 'Sacha DVR',
-    Icon: FaYoutube,
-  },
-  {
-    href: 'https://www.snapchat.com/add/chacha151101?share_id=RjZDQjdG&locale=fr_FR',
-    label: 'Snapchat',
-    handle: 'chacha151101',
-    Icon: FaSnapchatGhost,
-  },
-  {
-    href: 'https://www.pinterest.fr/sachaduvivier/',
-    label: 'Pinterest',
-    handle: 'sachaduvivier',
-    Icon: FaPinterest,
-  },
-]
+import { Link } from 'react-router-dom'
+import './Links.scss'
+import { FaChevronCircleLeft, FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub, FaInstagram, FaSnapchatGhost, FaYoutube, FaPinterest } from 'react-icons/fa'
 
 const Links = () => {
-  const { t } = useTranslation()
-
   return (
-    <div className="min-h-screen bg-background bg-grid py-12">
-      <Seo page="links" path="/links" />
-      <StructuredData />
-
-      <div className="container max-w-2xl space-y-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Button asChild variant="outline" size="sm">
-            <LocalizedLink to="/">
-              <FaChevronLeft /> {t('common.back')}
-            </LocalizedLink>
-          </Button>
-          <LanguageSwitcher />
-        </div>
-
-        <TerminalWindow title="~/links" bodyClassName="space-y-6">
-          <div className="flex items-center gap-4">
-            <ProfilePhoto className="h-20 w-20 rounded-soft border border-border object-cover shadow-brutal-sm" />
-            <div>
-              <h1 className="text-2xl font-bold uppercase tracking-tight">{t('links.title')}</h1>
-              <a
-                href={`mailto:${SITE.email}`}
-                className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-              >
-                {SITE.email}
-              </a>
-            </div>
-          </div>
-
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {SOCIAL_LINKS.map(({ href, label, handle, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="brutal-box brutal-interactive flex items-center gap-3 px-4 py-3"
-                >
-                  <Icon className="h-5 w-5 shrink-0 text-primary" />
-                  <span className="min-w-0">
-                    <span className="block text-xs font-medium uppercase tracking-[0.5px]">
-                      {label}
-                    </span>
-                    <span className="block truncate text-xs text-muted-foreground">{handle}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </TerminalWindow>
+    <div className="links-basic-content">
+        <div className="profile-card">
+      <div className="card-header">
+      <div id="back"><Link to="/"><FaChevronCircleLeft color="white" className='absolute top-5 left-5'/></Link></div>
+      <div className="pic">
+        <i id="img"></i>
       </div>
+      
+      <div className="name">Sacha DVR </div>
+      <div className="mail"><a href="./index.html#contact">contact@sachadvr.fr</a></div>
+      <div className="sm-box"><div className="sm">
+        <a href="https://www.facebook.com/profile.php?id=100010069578181" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaFacebookF />
+        </a>
+        <a href="https://twitter.com/SachaDvr" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaTwitter />
+        </a>
+        <a href="https://www.linkedin.com/in/sacha-duvivier-8b5a89205/" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaLinkedinIn />
+        </a>
+        <a href="https://github.com/sachadvr" className="grid place-items-center" target="_blank" rel="noreferrer" >
+            <FaGithub />
+        </a>
+      </div>
+      <div className="sm">
+        <a href="https://instagram.com/sachadvr" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaInstagram />
+        </a>
+        <a href="https://www.snapchat.com/add/chacha151101?share_id=RjZDQjdG&locale=fr_FR" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaSnapchatGhost />
+        </a>
+        <a href="https://www.youtube.com/channel/UCNDLN4TdHwS_o1Z6SPiO15w" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaYoutube />
+        </a>
+        <a href="https://www.pinterest.fr/sachaduvivier/" className="grid place-items-center" target="_blank" rel="noreferrer">
+            <FaPinterest />
+        </a>
+      </div>
+      </div>
+        </div>
+    
+    </div>
     </div>
   )
 }
-
 export default Links

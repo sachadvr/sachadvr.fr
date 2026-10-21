@@ -1,0 +1,61 @@
+.content {
+    clear: both;
+    width: 100%;
+    margin: auto;
+    padding: 50px 0px 50px 0px;
+    text-align: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    color:white;
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+    p {
+      width: 80%;
+      max-width: 1000px;
+      margin: auto;
+      line-height: 1.6;
+      text-align: center;
+    }
+  }
+  .show {
+    display: block!important;
+  }
+  #topscroll {
+    animation: fadeinright 1s;
+    display: none;
+  }
+  #mailsender {
+    animation: fadeinup 1s;
+    transition: 1.2s;
+    display: none;
+    a {
+      font-size: 30px;
+    }
+  }
+  #topscroll,
+  #mailsender {
+    position: fixed;
+    margin: 1em;
+    right: 10px;
+    bottom: 10px;
+  
+    a {
+      opacity: 0.7;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 30px;
+      padding: 5px 5px;
+      background: white;
+      box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.501);
+      &:hover {
+        color: black;
+        opacity: 1;
+      }
+    }
+  }
+  
+  
