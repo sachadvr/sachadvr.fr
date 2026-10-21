@@ -1,27 +1,19 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Main from '../components/Main'
+import CGU from '../components/CGU'
+import WhoAmi from '../components/WhoAmi'
+import CGV from '../components/CGV'
 
-import CGV from '@/components/CGV'
-import Footer from '@/components/Footer'
-import Seo from '@/components/Seo'
-import StructuredData from '@/components/StructuredData'
 
-const UtilisationCGV = () => {
-  const { t } = useTranslation()
-
+const Home = () => {
   return (
     <>
-      <Seo page="cgv" path="/cgv" />
-      <StructuredData
-        breadcrumb={[
-          { name: t('seo.home.title'), path: '/' },
-          { name: t('legal.cgv.title'), path: '/cgv' },
-        ]}
-      />
-      <CGV />
-      <Footer />
+    <Header />
+    <CGV />
+    <Footer />
     </>
   )
 }
-
-export default UtilisationCGV
+export default Home

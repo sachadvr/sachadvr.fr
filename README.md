@@ -6,7 +6,7 @@
 
 [Sachadvr.fr](Sachadvr.fr)
 
-<img src="https://raw.githubusercontent.com/sachadvr/sachadvr.fr/main/src/images/preview.png" alt="preview" width="300px">
+<img src="https://raw.githubusercontent.com/sachadvr/sachadvr/main/src/images/preview.png" alt="preview" width="300px">
 
   
   
@@ -38,66 +38,6 @@ Technologies used in the project:
 *   React markdown (Rehype raw/Remark gfm)
 *   React icons
 *   Sass
-
-<h2>🐳 Local run (Docker)</h2>
-
-<h3>Dev (hot reload)</h3>
-
-```bash
-docker compose --profile dev up -d --build
-```
-
-*   `website-dev` → http://localhost:5173 (serveur Vite, HMR actif)
-*   Le code est monté en volume : toute modification dans `src/` est rechargée sans rebuild.
-*   Après un changement de `package.json`, relancer avec `--build` (les `node_modules` vivent dans l'image).
-
-<h3>Prod (nginx)</h3>
-
-```bash
-docker compose --profile prod up -d --build
-```
-
-*   `website` → http://localhost (nginx + build Vite)
-*   `api-mock` → http://localhost:3001 (nginx servant des réponses statiques, aucune dépendance au vrai backend)
-
-L'URL de l'API est injectée au build via l'argument `VITE_API_URL` (défaut : `https://api.sachadvr.fr`). En local, docker-compose la pointe sur `api-mock`. Pour viser la vraie API :
-
-```bash
-VITE_API_URL=https://api.sachadvr.fr docker compose --profile prod up -d --build
-```
-
-Endpoints mockés (`docker/api-mock/`) : `GET /repos`, `GET /repos/{repo}/languages`, `POST /mail/sender`.
-
-<h2>🌍 Internationalisation & SEO</h2>
-
-Le site est servi en 5 langues : français (défaut), anglais, espagnol, chinois simplifié, japonais.
-
-*   Le français n'a **pas** de préfixe d'URL (`/cgu`), les autres langues en ont un (`/en/cgu`, `/ja/cgu`…).
-*   Toute la configuration vit dans `src/i18n/` : `config.ts` (langues, helpers d'URL), `site.ts` (identité, ville, image OG), `locales/*.json` (contenus), `LanguageLayout.tsx` (racine de routes par langue).
-*   Les liens internes passent par `<LocalizedLink>` ou `useLocalizedPath()`, jamais par `<Link>` directement, sinon le préfixe de langue est perdu.
-*   `<Seo>` produit `title`/`description`/`canonical`/`hreflang`/Open Graph/Twitter par page et par langue ; `<StructuredData>` produit le JSON-LD `Person`/`WebSite`/`BreadcrumbList`.
-*   `public/` est servi à la racine du site : `robots.txt`, `sitemap.xml` (multilingue, avec alternates `xhtml:link`), `llms.txt`, `preview.png` (image de partage).
-*   `index.html` porte la baseline SEO française ; ces balises sont marquées `data-rh="true"` pour que react-helmet-async les remplace au montage au lieu de les dupliquer.
-
-Après ajout d'une page ou d'une langue : mettre à jour `LANGUAGES` dans `src/i18n/config.ts`, les routes dans `src/App.tsx`, `public/sitemap.xml` et `public/llms.txt`.
-
-<h2>📄 GitHub Pages (sous-chemin)</h2>
-
-Le workflow `.github/workflows/deploy-pages.yml` (push sur `main` ou lancement manuel) build et publie le site sur https://sachadvr.github.io/sachadvr.fr/.
-
-*   Deux variables d'environnement de build, lues par `vite.config.ts` :
-    *   `BASE_PATH` (défaut `/`) : `base` de Vite et `basename` de react-router. Les préfixes de langue se placent dessous (`/sachadvr.fr/en/cgu`).
-    *   `SITE_URL` (origine publique, défaut : domaine `https://sachadvr.fr` sans base) : les URLs absolues SEO (canonical, hreflang, Open Graph, JSON-LD) valent `SITE_URL` + `BASE_PATH`. Le domaine `https://sachadvr.fr` codé en dur dans `index.html`, `robots.txt`, `sitemap.xml`, `llms.txt` et `ai-catalog.json` est réécrit vers cette URL au build.
-*   Sur Pages, ces valeurs viennent de `actions/configure-pages` (`base_path`, `origin`), surchargeables par les variables de dépôt `vars.BASE_PATH` / `vars.SITE_URL` (ex. `SITE_URL=https://sachadvr.fr` pour garder le canonical sur le domaine principal). Avec un domaine personnalisé, `base_path` est vide : le site repasse à la racine sans autre changement.
-*   Pages n'a pas de réécriture SPA : le workflow copie `dist/index.html` en `dist/404.html`, servi pour toute URL profonde (avec un statut HTTP 404).
-*   Liens internes : toujours des chemins applicatifs (`<LocalizedLink to="/cgu">`), jamais `/sachadvr.fr` en dur. Hors routeur, utiliser `withBasePath` / `stripBasePath` de `src/lib/base-path.ts`.
-*   Docker/nginx et le build par défaut sont inchangés (`BASE_PATH=/`).
-
-```bash
-# Reproduire le build Pages en local
-BASE_PATH=/sachadvr.fr/ SITE_URL=https://sachadvr.github.io npm run build
-npm test   # helpers de chemin de base (node --test, Node >= 22.18)
-```
 
 <h2>💖Like my work?</h2>
 

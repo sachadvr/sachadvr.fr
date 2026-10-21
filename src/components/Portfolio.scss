@@ -1,0 +1,244 @@
+@import 'src/colors';
+
+
+.boxcontainer {
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+
+  #active {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%) rotateX(14deg) rotateY(340deg);
+    position: absolute;
+    z-index: 1000;
+    background: rgb(255, 255, 255);
+    background-position: right 10px top;
+    color: black;
+    transition: 0.5s ease-in;
+    cursor: url("..//images/cursor.png") 16 16, auto;
+    background-position: right;
+    background-size: 100px 100px;
+    overflow: hidden;
+    background-repeat: repeat;
+    &:hover {
+      background-size: 500px 300px;
+      background-position-x: 30px;
+    }
+
+    #highlight {
+      position: absolute;
+      width: 30%;
+      height: 100%;
+      border: 1px solid black;
+      right: 0em;
+      top: 0em;
+      opacity: 1;
+      background: $main_frg;
+
+      p {
+        opacity: 0;
+        transition: 400ms;
+        transform: translateY(-50px);
+        margin-top: 5px;
+        background: black;
+        padding: 3px;
+        margin-bottom: -15px;
+      }
+    }
+  }
+}
+.section-title {
+  position: relative;
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 7px;
+    background: #ff9494;
+    bottom: 0;
+    box-shadow: 0 2px 2px #0000001f;
+  }
+}
+.portfolio-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  overflow: hidden;
+  flex-wrap: wrap;
+  background: rgb(250, 248, 248);
+  border-radius: 30px;
+  margin-bottom: 2rem;
+}
+.custom {
+  // make 1 row children
+
+}
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: black !important;
+  background: rgb(250, 248, 248);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  z-index: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 110px;
+
+    background-image: url(../images/wave3.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    left: 0;
+    z-index: -500;
+  }
+}
+
+.project-box {
+  &::before {
+    content: "";
+    background: currentColor;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -100%;
+    transition: left 0.4s;
+    font-size: 20px;
+    font-weight: 500;
+    border: solid 0px white;
+  }
+  &:hover {
+    &::before {
+      left: 0;
+    }
+    
+    transform: scale(1.01);
+  }
+  position: relative;
+  background-position: center;
+  cursor: zoom-in;
+  text-decoration: none;
+  color: white;
+  overflow: hidden;
+  transition: background 0.4s;
+  gap: 30px;
+}
+
+.noimage {
+  background: rgb(214, 210, 210);
+  
+
+  // do a scss function to get random color
+  
+}
+
+@function random-color() {
+  @return rgb(random(255), random(255), random(255));
+}
+
+
+@for $i from 12 through 30 {
+  $color: random-color();
+  .noimage:nth-of-type(#{$i}) {
+    background-color: $color;
+   
+  }
+  
+}
+.project-box {
+    
+  & .project-description {
+    margin: 2rem 1rem 0 1rem;
+    font-size: .9rem;
+    transition: all 0.4s ease-in-out;
+
+  }
+  & .project-bio {
+    transition: all 0.4s ease-in-out;
+  }
+  &:hover {
+    & .project-description {
+      font-size: 1rem;
+      opacity: 0;
+    }
+    & .project-bio {
+      color:black;
+    }
+  }
+    &::before {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-image: url(../images/github-logo-vector.svg);
+      background-size: 250px 150px;
+}
+}
+.noimage:nth-of-type(1) {background-color: rgb(134, 56, 250);}
+.noimage:nth-of-type(2) {background-color: rgb(97, 88, 92);}
+.noimage:nth-of-type(3) {background-color: rgb(98, 190, 104);}
+.noimage:nth-of-type(4) {background-color: rgb(164, 193, 215);}
+.noimage:nth-of-type(5) {background-color:rgb(85, 53, 190);}
+.noimage:nth-of-type(6) {background-color: rgb(142, 158, 234);}
+.noimage:nth-of-type(7) {background-color: rgb(185, 132, 250);}
+.noimage:nth-of-type(8) {background-color: rgb(202, 99, 77);}
+.noimage:nth-of-type(9) {background-color: rgb(255, 121, 222);}
+.noimage:nth-of-type(10) {background-color: rgb(190, 236, 250);}
+.noimage:nth-of-type(11) {background-color: rgb(64, 206, 249);}
+
+
+
+.no-grid {
+  min-height: 8rem;
+  min-width: 180px;
+  flex: 1;
+}
+.project-bio {
+  position: absolute;
+  bottom: 0px;
+  display: grid;
+  transition: width 1s;
+  padding: 5px 5px;
+  color:white;
+  background: rgba(0, 0, 0, 0.095);
+  height: 40px;
+}
+.project-name {
+  font-weight: 900;
+  font-size: 10px;
+
+}
+
+// .langs {
+//   &:not(:empty) {
+//     border: 1px solid white;
+//   }
+// }
+.project-desc {
+  font-weight: 300;
+  font-size: 10px;
+  @apply rounded-sm;
+  
+  width: fit-content;
+  bottom: 5px;
+  
+}

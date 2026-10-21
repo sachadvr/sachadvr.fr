@@ -1,130 +1,129 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { FaChevronLeft, FaGithub } from 'react-icons/fa'
-import { useTranslation } from 'react-i18next'
-import 'github-markdown-css/github-markdown-light.css'
-
-import { API_URL } from '@/config'
-import { SITE } from '@/i18n/site'
-import Footer from '@/components/Footer'
-import LocalizedLink from '@/components/LocalizedLink'
-import Seo from '@/components/Seo'
-import StructuredData from '@/components/StructuredData'
-import MarkdownViewer from '@/components/MarkdownViewver'
-import TerminalWindow from '@/components/TerminalWindow'
-import SectionHeading from '@/components/SectionHeading'
-import { Button } from '@/components/ui/button'
-
-interface Repository {
-  name: string
-  description: string | null
-}
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import githublogo from "../../images/github-logo-vector.svg";
+import "github-markdown-css/github-markdown-light.css";
+import { marked } from "marked";
+import { FaChevronCircleLeft } from "react-icons/fa";
+import Header from "../../components/Header";
+import WhoAmi from "../../components/WhoAmi";
+import Contact from "../../components/Contact";
+import Footer from "../../components/Footer";
+import MarkdownViewer from "../../components/MarkdownViewver";
 
 const Git = () => {
-  const { t } = useTranslation()
-  const { repoName } = useParams()
-  const [repository, setRepository] = useState<Repository | null>(null)
-  const [readme, setReadme] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    let cancelled = false
-    setIsLoading(true)
-
-    fetch(`https://raw.githubusercontent.com/sachadvr/${repoName}/master/README.md`)
-      .then((response) => response.text())
-      .then((content) => {
-        if (cancelled) return
-        setReadme(content === '404: Not Found' ? t('repo.noReadme') : content)
+  const filteredContent = () => {
+    let content = (
+      <h1 className="text-sm">
+        <Link to="/">
+          <button className="flex items-center gap-1">
+            <FaChevronCircleLeft /> Retour à la page d&apos;accueil
+          </button>{" "}
+        </Link>
+        <br />
+        Impossible de trouver le projet...
+      </h1>
+    );
+    repo
+      .filter((item: any) => {
+        if (item.name === params.repoName) {
+          return item;
+        }
       })
-      .catch(() => undefined)
+      .map((item: any) => {
+        content = (
+          <div key={item.name}>
+            <Link to="/">
+              <h1 className="flex items-center gap-1 text-sm">
+                <FaChevronCircleLeft />{" "}
+                {item.name.charAt(0).toUpperCase() +
+                  item.name.slice(1).toLowerCase()}
+              </h1>{" "}
+            </Link>
+            <img src={githublogo} alt={item.name} className="w-24" />
+            <div className="mb-3">
+              <a
+                className="underline"
+                href="https://github.com/sachadvr?tab=repositories"
+              >
+                Repositories
+              </a>
+              /
+              <a
+                className="underline"
+                href={`https://github.com/sachadvr/${item.name}`}
+              >
+                {item.name}
+              </a>
+            </div>
+            <h1 className="border border-black w-fit p-3 mb-3">
+              {item.description}
+            </h1>
+            Ouvrir le projet sur github :{" "}
+            <a href={`https://github.com/sachadvr/${item.name}`}>
+              <button className="bg-blue-100 p-1">{item.name}</button>
+            </a>
+            <iframe
+              className=""
+              src={`https://ghbtns.com/github-btn.html?user=sachadvr&repo=${item.name}&type=star&count=true`}
+              frameBorder="0"
+              scrolling="0"
+              width="170px"
+              height="20px"
+            ></iframe>
+            <div className="container max-w-none border border-black p-5 rounded-2xl markdown-body ">
+              <MarkdownViewer markdown={readme} />
+            </div>
+          </div>
+        );
+      });
+    return content;
+  };
+  const params = useParams();
+  let isFetched = false;
+  const [repo, setRepo] = React.useState<any>([]);
+  const [readme, setReadme] = React.useState<any>([]);
+  function fetchRepo() {
+    isFetched = true;
+    fetch(
+      `https://raw.githubusercontent.com/sachadvr/${params.repoName}/master/README.md`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        if (data === "404: Not Found") {
+          setReadme("Aucun README.md trouvé");
+        } else {
+          setReadme(data);
+        }
+      });
 
-    fetch(`${API_URL}/repos`)
-      .then((response) => response.json())
-      .then((repositories: Repository[]) => {
-        if (cancelled) return
-        setRepository(repositories.find(({ name }) => name === repoName) ?? null)
-        setIsLoading(false)
-      })
-      .catch(() => {
-        if (!cancelled) setIsLoading(false)
-      })
+    fetch(`https://api.sachadvr.fr/repos`)
+      .then((res) => res.json())
+      .then((data) => {
+        const repo = data.map((item: any) => {
+          return {
+            name: item.name,
+            description: item.description,
+          };
+        });
+        setRepo(repo);
+      });
+  }
 
-    return () => {
-      cancelled = true
-    }
-  }, [repoName, t])
-
-  const githubUrl = `https://github.com/${SITE.githubUser}/${repoName}`
+  React.useEffect(() => {
+    if (isFetched) return;
+    fetchRepo();
+  }, []);
 
   return (
     <>
-      <Seo page="repo" path={`/git/${repoName}`} values={{ repo: repoName ?? '' }} />
-      <StructuredData
-        breadcrumb={[
-          { name: t('seo.home.title'), path: '/' },
-          { name: repoName ?? '', path: `/git/${repoName}` },
-        ]}
-      />
-
-      <div className="min-h-screen bg-background bg-grid py-12">
-        <div className="container max-w-4xl space-y-6">
-          <Button asChild variant="outline" size="sm">
-            <LocalizedLink to="/">
-              <FaChevronLeft /> {t('common.backHome')}
-            </LocalizedLink>
-          </Button>
-
-          {isLoading && (
-            <p className="terminal-prompt text-sm text-muted-foreground">
-              {t('repo.loading', { repo: repoName })}
-              <span className="ml-1 inline-block h-4 w-2 translate-y-[2px] animate-blink bg-accent" />
-            </p>
-          )}
-
-          {!isLoading && !repository && (
-            <TerminalWindow title="stderr">
-              <p className="text-sm text-destructive">
-                {t('repo.notFound', { repo: repoName })}
-              </p>
-            </TerminalWindow>
-          )}
-
-          {repository && (
-            <>
-              <SectionHeading command={`git show ${repository.name}`} title={repository.name} />
-
-              <TerminalWindow title="~/metadata" bodyClassName="space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  {repository.description || t('repo.noDescription')}
-                </p>
-                <div className="flex flex-wrap items-center gap-4">
-                  <Button asChild>
-                    <a href={githubUrl} target="_blank" rel="noreferrer">
-                      <FaGithub /> {t('repo.openGithub')}
-                    </a>
-                  </Button>
-                  <iframe
-                    title={t('repo.starsTitle', { repo: repository.name })}
-                    src={`https://ghbtns.com/github-btn.html?user=${SITE.githubUser}&repo=${repository.name}&type=star&count=true`}
-                    frameBorder="0"
-                    scrolling="0"
-                    width="170"
-                    height="20"
-                  />
-                </div>
-              </TerminalWindow>
-
-              <TerminalWindow title="README.md">
-                <MarkdownViewer markdown={readme} />
-              </TerminalWindow>
-            </>
-          )}
-        </div>
+      <Header />
+      <WhoAmi />
+      <div className="w-full mx-auto" style={{ maxWidth: "1200px" }}>
+        <div className="m-7">{filteredContent()}</div>
       </div>
+      <Contact />
       <Footer />
     </>
-  )
-}
-
-export default Git
+  );
+};
+export default Git;

@@ -1,23 +1,30 @@
 import React from 'react'
-
-import FeaturedProjects from '@/components/FeaturedProjects'
-import Portfolio from '@/components/Portfolio'
-import WhoAmi from '@/components/WhoAmi'
-import Metrics from '@/components/Metrics'
-import Contact from '@/components/Contact'
-import ScrollToTop from '@/components/ScrollToTop'
+import Portfolio from './Portfolio'
+import WhoAmi from './WhoAmi'
+import './Main.scss'
+import Contact from './Contact'
+import { Link } from 'react-router-dom'
+import { FaChevronUp } from 'react-icons/fa'
 
 const Main = () => {
+  function ObserveScroll() {
+    const topScroll = document.getElementById('topscroll');
+    if (window.scrollY > 100) {
+      topScroll?.classList.add('show');
+    } else {
+      topScroll?.classList.remove('show');
+    }
+  }
+  window.addEventListener('scroll', ObserveScroll);
   return (
     <main>
-      <WhoAmi />
-      <FeaturedProjects />
-      <Portfolio />
-      <Metrics />
-      <Contact />
-      <ScrollToTop />
+        <WhoAmi/>
+        <Portfolio/>
+        <Contact/>
+        <div id="topscroll"> 
+        <Link to="/" className="grid" onClick={e=> {window.scroll(0,0)}}><FaChevronUp color='black' />
+    </Link></div>
     </main>
   )
 }
-
 export default Main

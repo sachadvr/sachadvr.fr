@@ -1,0 +1,128 @@
+input {
+    outline: none;
+    max-width: 300px;
+    width: 100%;
+    padding: 4px;
+    vertical-align: top;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 1px white;
+    color:black;
+    cursor: url("../images/cursor.png") 16 16, auto;
+    &:hover {
+      background-color: rgb(175, 185, 254);
+    }
+    &:focus {
+      background-color: rgb(175, 185, 254);
+      border-radius: 15px;
+      transition: 0.5s;
+    }
+    &:valid + span {
+      &:not(#spansubmit) {
+        &:after {
+          position: absolute;
+          display: inline-block;
+          margin-left: 15px;
+          color: rgb(255, 255, 255);
+          content: "✓";
+        }
+      }
+    }
+  }
+  textarea {
+    outline: none;
+    max-width: 300px;
+    width: 100%;
+    padding: 4px;
+    vertical-align: top;
+    border-radius: 15px;
+    padding: 10px;
+    color:black;
+    background-color: rgb(255, 255, 255);
+    border: 1px white;
+    cursor: url("..//images/cursor.png") 16 16, auto;
+    height: 5em;
+    padding: 15px;
+    resize: vertical;
+    &:hover {
+      background-color: rgb(175, 185, 254);
+    }
+    &:focus {
+      background-color: rgb(175, 185, 254);
+      border-radius: 15px;
+      transition: 0.5s;
+    }
+  }
+  #sujet {
+    width: 250px;
+  }
+  input#btnsubmit {
+    color:white;
+    cursor: pointer;
+    position: relative;
+    background-size: 200% 100%;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-position 0.5s;
+  
+    border-radius: 4px;
+    height: 38px;
+  
+    background-image: linear-gradient(
+      90deg,
+      rgb(80, 69, 65) 50%,
+      rgb(255, 255, 255) 50%
+    );
+    &:hover {
+      transition: 1s;
+      background-image: linear-gradient(
+        90deg,
+        rgb(94, 79, 72) 50%,
+        rgb(255, 255, 255) 50%
+      );
+    }
+  }
+  label {
+    display: inline-block;
+    width: 200px;
+    margin-right: 20px;
+    vertical-align: top;
+    text-align: right;
+  }
+  form {
+    p {
+      padding-top: 1.8vw;
+      
+    }
+    margin-top: 15px;
+    padding: 40px 0 40px 0;
+    background-color: black;
+    border: 0px solid white;
+    border-radius: 2px;
+    
+  }
+
+  
+.contact {
+    background-color: black;
+    text-align: center;
+  
+    h2 {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    p#desc {
+      color: rgb(255, 255, 255);
+      width: 90%;
+      max-width: 600px;
+      padding: 15px 0;
+    }
+    form {
+      margin-bottom: 50px;
+    }
+  }
